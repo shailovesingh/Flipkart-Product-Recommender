@@ -1,6 +1,6 @@
 langchain
 langchain-astradb
-langchain-hugginface
+langchain-huggingface
 langchain-groq
 langchain-community
 datasets
