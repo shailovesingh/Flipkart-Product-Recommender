@@ -7,6 +7,8 @@ from flipkart.rag_chain import RAGChainBuilder
 from dotenv import load_dotenv
 load_dotenv()
 
+REQUEST_COUNT = Counter("http_requests_total" , "Total HTTP Request")
+
 def create_app():
 
     app = Flask(__name__)
@@ -16,6 +18,7 @@ def create_app():
 
     @app.route("/")
     def index():
+        REQUEST_COUNT.inc()
         return render_template("index.html")
     
     @app.route("/get" , methods=["POST"])
@@ -29,6 +32,10 @@ def create_app():
         )["answer"]
 
         return response
+    
+    @app.route("/metrics")
+    def metrics():
+        return Response(generate_latest(), mimetype="text/plain")
     
     return app
 
