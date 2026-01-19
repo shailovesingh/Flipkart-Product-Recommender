@@ -1,3 +1,11 @@
 .env
 venv/
 FLIPKART_RECOMMENDER.egg-info/
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# C extensions
+*.so
